@@ -1,0 +1,16 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true,
+  },
+  "rules": {
+    "no-sync": 0,
+  },
+  "globals": {
+    "expect": false,
+    "Promise": false,
+  },
+  "extends": [
+    "zavatta",
+  ]
+}
