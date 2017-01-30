@@ -1,5 +1,7 @@
 # svg2react
 
+[![Build Status](https://travis-ci.org/meriadec/svg2react.svg?branch=master)](https://travis-ci.org/meriadec/svg2react)
+
 # Installation
 
 ```
