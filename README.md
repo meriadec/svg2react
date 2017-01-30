@@ -15,5 +15,5 @@ npm install -g svg2react
 
     -h, --help              output usage information
     -V, --version           output the version number
-    -d, --output-dir [dir]  Output directory
+    -d, --output-dir [dir]  output directory
 ```
