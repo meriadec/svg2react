@@ -2,11 +2,11 @@ import React from 'react'
 
 export default props => (
   <svg
-    {...props}
     style={{
       enableBackground: 'new 0 0 24 24',
     }}
     viewBox='0 0 24 24'
+    {...props}
   >
     <path
       d='M0 0h24v24H0z'

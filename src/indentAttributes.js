@@ -54,8 +54,8 @@ export default function indentAttributes (svg) {
         indentParent(`</${tag}>`),
       ]) : ([
         indentParent(`<${tag}`),
-        !isClosing && tag === 'svg' ? indentChild('{...props}') : null,
         attributes,
+        !isClosing && tag === 'svg' ? indentChild('{...props}') : null,
         indentParent(isAutoclosing ? '/>' : '>'),
       ])).filter(e => e).join('\n'))
     }, [])
