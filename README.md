@@ -1,6 +1,6 @@
 # svg2react
 
-[![Build Status](https://travis-ci.org/meriadec/svg2react.svg?branch=master)](https://travis-ci.org/meriadec/svg2react)
+[![Build](https://img.shields.io/travis/meriadec/svg2react.svg?style=flat-square)](https://travis-ci.org/meriadec/svg2react)
 
 # Installation
 
