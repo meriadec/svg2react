@@ -39,15 +39,17 @@ export default function indentAttributes (svg) {
 
       const attributes = rAttr
         .map(str => {
-          str = str.trim()
-          str = str.replace(/"/g, '\'')
-          if (str.startsWith('style=')) {
+          str = str.trim().replace(/"/g, '\'')
+          const [key, val] = str.split('=')
+          if (key === 'class') { return null }
+          if (key === 'style') {
             return strToStyle(str)
               .map(indentChild)
               .join('\n')
           }
-          return indentChild(str.trim())
+          return indentChild(`${camelCase(key)}=${val}`)
         })
+        .filter(e => e)
         .join('\n')
 
       return acc.concat((isClosing ? ([
