@@ -20,7 +20,7 @@ function applyIndent (indentLevel) {
   }
 }
 
-export default function indentAttributes (svg) {
+export default function indentAttributes (svg, options) {
   return svg
     .split('\n')
     .reduce((acc, line) => {
@@ -39,7 +39,10 @@ export default function indentAttributes (svg) {
 
       const attributes = rAttr
         .map(str => {
-          str = str.trim().replace(/"/g, '\'')
+          str = str.trim()
+          if (!options.doubleQuotes) {
+            str = str.replace(/"/g, '\'')
+          }
           const [key, val] = str.split('=')
           if (key === 'class') { return null }
           if (key === 'style') {

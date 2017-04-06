@@ -9,8 +9,8 @@ export default async function convertSVG (svg, options = {}) {
   const cleaned = await applySVGO(svg, options)
 
   return flow([
-    indentAttributes,
-    reactTemplate,
+    c => indentAttributes(c, options),
+    c => reactTemplate(c, options),
   ])(cleaned)
 
 }

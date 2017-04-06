@@ -12,6 +12,7 @@ program
   .version(version)
   .usage('[options] <file> [otherFiles...]')
   .option('-d, --output-dir [dir]', 'Output directory')
+  .option('-q, --quotes', 'Use double quotes instead of simple quotes for surround attributes')
   .parse(process.argv)
 
 if (!program.args.length) {
