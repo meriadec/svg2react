@@ -11,6 +11,9 @@ export default function applySVGO (svg, options = {}) {
     plugins: [
       { removeXMLNS: true },
       { removeDimensions: true },
+      { removeScriptElement: true },
+      { removeDimensions: true },
+      { removeTitle: true },
       { convertStyleToAttrs: false },
       { removeStyleElement: true },
       { sortAttrs: true },
