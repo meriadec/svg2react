@@ -7,6 +7,8 @@ import program from 'commander'
 import { version } from '../package.json'
 import convertFile from './convertFile'
 import buildOptions from './buildOptions'
+import glob from 'glob'
+import fs from 'fs'
 
 program
   .version(version)
@@ -20,9 +22,12 @@ if (!program.args.length) {
   process.exit(1)
 }
 
-const files = program.args
+let files = program.args
 const options = buildOptions(program)
 
+if (files.length === 1 && !fs.existsSync(files[0])) {
+  files = glob.sync(files[0])
+}
 files
   .reduce(
     (promise, file) => promise.then(

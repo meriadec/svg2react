@@ -1,14 +1,14 @@
 {
   "name": "svg2react",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "CLI to convert SVG to React component",
   "main": "lib/svg-to-react.js",
   "bin": {
     "svg2react": "./lib/index.js"
   },
   "scripts": {
-    "clean": "rm -rf lib",
-    "build": "npm run clean && babel src --out-dir lib && chmod +x lib/index.js",
+    "clean": "cross-env --c-only-linux rm -rf lib",
+    "build": "npm run clean && babel src --out-dir lib && cross-env --c-only-linux chmod +x lib/index.js",
     "start": "babel-node src",
     "lint": "eslint src test",
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill test/*.js"
@@ -31,6 +31,8 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "commander": "^2.9.0",
+    "cross-env": "mr47/cross-env",
+    "glob": "^7.1.2",
     "lodash": "^4.17.4",
     "svgo": "^0.7.2"
   },
