@@ -1,6 +1,6 @@
 {
   "name": "svg2react",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "CLI to convert SVG to React component",
   "main": "lib/svg-to-react.js",
   "bin": {
