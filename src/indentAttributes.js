@@ -24,12 +24,14 @@ export default function indentAttributes (svg, options) {
   return svg
     .split('\n')
     .reduce((acc, line) => {
-      const r = line.match(/(<\/?)([^ ]*) ?([^/]*)(\/?>)/)
-      if (!r) { return acc }
-      const isClosing = r[1] === '</'
-      const isAutoclosing = r[4] === '/>'
-      const tag = r[2]
-      const attrsStr = r[3]
+      const r = line.match(/^(.*?)(<\/?)([^ ]*) ?([^/]*)(\/?>)(.*?)$/)
+      if (!r) { return line.trim() ? acc.concat(line) : acc }
+      const prefix = r[1].replace(/ *$/, '')
+      const suffix = r[6].replace(/ *$/, '')
+      const isClosing = r[2] === '</'
+      const isAutoclosing = r[5] === '/>'
+      const tag = r[3]
+      const attrsStr = r[4]
       const indentLevel = line.match(/^( *)/)[1].length
 
       const indentParent = applyIndent(indentLevel)
@@ -55,7 +57,7 @@ export default function indentAttributes (svg, options) {
         .filter(e => e)
         .join('\n')
 
-      return acc.concat((isClosing ? ([
+      const preSuffix = (prefix ? acc.concat(prefix) : acc).concat((isClosing ? ([
         indentParent(`</${tag}>`),
       ]) : ([
         indentParent(`<${tag}`),
@@ -63,6 +65,7 @@ export default function indentAttributes (svg, options) {
         !isClosing && tag === 'svg' ? indentChild('{...props}') : null,
         indentParent(isAutoclosing ? '/>' : '>'),
       ])).filter(e => e).join('\n'))
+      return suffix ? preSuffix.concat((isAutoclosing ? suffix : indentChild(suffix))) : preSuffix
     }, [])
     .join('\n')
 }
